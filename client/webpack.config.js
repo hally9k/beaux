@@ -1,6 +1,7 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const path = require('path')
 const proxy = require('./serve/proxy').default
+const MinifyPlugin = require('babel-minify-webpack-plugin')
 
 const mode = process.env.NODE_ENV === 'production' ? 'production' : 'development'
 const isDev = mode === 'development'
@@ -49,6 +50,21 @@ let config = {
 	resolve: {
 		extensions: ['.js', '.jsx'],
 		modules: ['node_modules', 'src']
+	},
+	optimization: {
+		minimize: !isDev,
+		minimizer: [
+			new MinifyPlugin(
+				{
+					removeDebugger: true,
+					removeConsole: true,
+					mangle: false
+				},
+				{
+					sourceMap: false
+				}
+			)
+		]
 	}
 }
 
