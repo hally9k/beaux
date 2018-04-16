@@ -7,7 +7,7 @@ const isDev = mode === 'development'
 
 let config = {
 	mode: 'development',
-	devtool: 'cheap-module-source-map',
+	devtool: isDev ? 'cheap-module-source-map' : false,
 	entry: ['react-hot-loader/patch', path.resolve(__dirname, 'src/index.js')],
 	output: {
 		path: path.resolve(__dirname, 'dist'),
