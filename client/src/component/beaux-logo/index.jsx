@@ -36,12 +36,16 @@ export default () => (
 			<Typing.Delay ms={4000} />
 			<Typing.Backspace count={5} />
 		</Typing>
-		<h2 className="strap-line">{getMessage()}</h2>
+		<h2 className="strap-line" />
 	</div>
 )
 
-let count = 0
-const getMessage = () => messages[count++ % 6]
+let count = -1
+
+const getMessage = () => {
+	return messages[++count % 6]
+}
+
 const messages = [
 	'Beautiful User Experiences',
 	'Watch This Space',
@@ -55,10 +59,15 @@ const onFinishedTyping = () => {
 	root.style.setProperty('--ux-color', randomColor())
 	const strapLine = document.querySelector('.strap-line')
 	strapLine.classList.remove('visible')
+
 	addVisibility()
 }
 
 const addVisibility = () => {
+	setTimeout(() => {
+		const strapLine = document.querySelector('.strap-line')
+		strapLine.innerText = getMessage()
+	}, 2000)
 	setTimeout(() => {
 		const strapLine = document.querySelector('.strap-line')
 		strapLine.classList.add('visible')

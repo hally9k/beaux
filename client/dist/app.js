@@ -46338,25 +46338,30 @@ const root = document.querySelector(':root');
 		react__WEBPACK_IMPORTED_MODULE_0__["createElement"](react_typing_animation__WEBPACK_IMPORTED_MODULE_1___default.a.Delay, { ms: 4000 }),
 		react__WEBPACK_IMPORTED_MODULE_0__["createElement"](react_typing_animation__WEBPACK_IMPORTED_MODULE_1___default.a.Backspace, { count: 5 })
 	),
-	react__WEBPACK_IMPORTED_MODULE_0__["createElement"](
-		'h2',
-		{ className: 'strap-line' },
-		getMessage()
-	)
+	react__WEBPACK_IMPORTED_MODULE_0__["createElement"]('h2', { className: 'strap-line' })
 ));
 
-let count = 0;
-const getMessage = () => messages[count++ % 6];
+let count = -1;
+
+const getMessage = () => {
+	return messages[++count % 6];
+};
+
 const messages = ['Beautiful User Experiences', 'Watch This Space', 'Seductive UX', 'Watch This Space', 'Experience The Beautiful', 'Watch This Space'];
 
 const onFinishedTyping = () => {
 	root.style.setProperty('--ux-color', randomColor());
 	const strapLine = document.querySelector('.strap-line');
 	strapLine.classList.remove('visible');
+
 	addVisibility();
 };
 
 const addVisibility = () => {
+	setTimeout(() => {
+		const strapLine = document.querySelector('.strap-line');
+		strapLine.innerText = getMessage();
+	}, 2000);
 	setTimeout(() => {
 		const strapLine = document.querySelector('.strap-line');
 		strapLine.classList.add('visible');
