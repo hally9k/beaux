@@ -1,0 +1,37 @@
+:root {
+	--ux-color: #236aa4;
+}
+
+.container {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.beaux {
+	font-size: 10rem;
+	font-weight: 900;
+	min-height: 12rem;
+	color: silver;
+}
+
+.ux {
+    color: var(--ux-color)
+}
+
+.cursor {
+	color: silver;
+}
+
+.strap-line {
+	color: silver;
+	opacity: 0;
+	transition: opacity ease-in 1s;
+	font-weight: 200;
+}
+
+.visible {
+	opacity: 1;
+	transition: opacity ease-in 1s;
+}

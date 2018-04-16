@@ -1,0 +1,12 @@
+{
+  "name": "fresh-stack",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:hally9k/fresh-stack.git",
+  "author": "hally9k <hally9k@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "flow-bin": "^0.69.0"
+  },
+  "dependencies": {}
+}

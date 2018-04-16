@@ -1,0 +1,16 @@
+{
+    "env": {
+      "production": {
+        "plugins": [
+            "transform-class-properties",
+            ["emotion", { "hoist": true }]]
+      },
+      "development": {
+        "plugins": [
+            "transform-class-properties",
+            ["emotion", { "sourceMap": true, "autoLabel": true }]
+        ]
+      }
+    },
+    "presets": ["react"]
+}

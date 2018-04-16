@@ -1,0 +1,9 @@
+[options]
+emoji=true
+
+experimental.const_params=true
+
+suppress_comment= \\(.\\|\n\\)*\\$FlowTODO
+
+[version]
+>=0.60.0

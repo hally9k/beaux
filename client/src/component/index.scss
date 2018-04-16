@@ -1,0 +1,18 @@
+:root {
+	--ux-color: #236aa4;
+}
+
+.app {
+    font-family: sans-serif;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100vh;
+}
+
+.contact {
+	position: absolute;
+	bottom: 0;
+	color: silver;
+	font-weight: 200;
+}
