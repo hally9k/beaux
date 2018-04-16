@@ -1,2 +1,2 @@
-# fresh-stack
-A front end development stack of the freshest.
+# beaux.nz
+The website for Beaux User Experiences.
