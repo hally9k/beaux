@@ -68,35 +68,35 @@ const requestEpic = $action =>
 			`https://api.unsplash.com/search/photos/?page=1&query=${payload} texture&client_id=73c33f84498fa526d6cfa571253007d571012760a3b48cb5ebfdcd518083c45b`
 		)
 			.then(x => x.json())
-			.then(data => {
-				const randomIndex = getRandomInt(0, data.results.length - 1)
-				console.log(payload, data.results.length, randomIndex)
-
-				const result =
-					data.results && data.results.length
-						? data.results[randomIndex]
-						: fallbackImages[getRandomInt(0, fallbackImages.length - 1)]
-
-				const {
-					user: {
-						name: photographerName,
-						links: { self: photographerProfile }
-					},
-					urls: { small: imageUrl }
-				} = result
-
-				img.src = imageUrl
-
-				return receive({
-					imageUrl,
-					photographerName,
-					photographerProfile
-				})
-			})
+			.then(data => receive(processResponse(data)))
+			.catch(() => receive(processResponse()))
 	})
 
 function getRandomInt(min, max) {
 	return Math.floor(Math.random() * (max - min + 1)) + min
+}
+
+function processResponse(data) {
+	const result =
+		data && data.results && data.results.length
+			? data.results[getRandomInt(0, data.results.length - 1)]
+			: fallbackImages[getRandomInt(0, fallbackImages.length - 1)]
+
+	const {
+		user: {
+			name: photographerName,
+			links: { self: photographerProfile }
+		},
+		urls: { small: imageUrl }
+	} = result
+
+	img.src = imageUrl
+
+	return {
+		photographerName,
+		photographerProfile,
+		imageUrl
+	}
 }
 
 export const epics = {
