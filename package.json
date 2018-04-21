@@ -13,6 +13,9 @@
   "gh-pages-deploy": {
     "staticpath": "dist",
     "cname": "beaux.nz",
+    "prep": [
+      "build"
+    ],
     "noprompt": false
   },
   "dependencies": {
