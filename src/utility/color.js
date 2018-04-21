@@ -1398,7 +1398,7 @@ var ntc = {
 		['F4F4F4', 'Wild Sand'],
 		['F4F8FF', 'Zircon'],
 		['F57584', 'Froly'],
-		['F5C85C', 'Cream Can'],
+		['F5C85C', 'Cream'],
 		['F5C999', 'Manhattan'],
 		['F5D5A0', 'Maize'],
 		['F5DEB3', 'Wheat'],
