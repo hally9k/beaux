@@ -14,7 +14,7 @@ const epicMiddleware = createEpicMiddleware(epics)
 
 const enhancer = composeWithDevTools(applyMiddleware(epicMiddleware, logger))
 
-const store = createStore(reducers, { todo: List() }, enhancer)
+const store = createStore(reducers, { image: null }, enhancer)
 
 ReactDOM.render(
 	<Provider store={store}>

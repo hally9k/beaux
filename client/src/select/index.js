@@ -1,5 +1,5 @@
-import todo from 'select/todo'
+import image from 'select/image'
 
 export default {
-	todo
+	image
 }

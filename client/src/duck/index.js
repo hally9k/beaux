@@ -1,9 +1,9 @@
 import { combineReducers } from 'redux'
 import { combineEpics } from 'redux-observable'
-import todo, { epics as todoEpics } from 'duck/todo'
+import image, { epics as imageEpics } from 'duck/image'
 
 export default combineReducers({
-	todo
+	image
 })
 
-export const epics = combineEpics(...Object.values(todoEpics))
+export const epics = combineEpics(...Object.values(imageEpics))

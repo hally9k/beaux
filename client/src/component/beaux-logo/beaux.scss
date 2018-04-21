@@ -1,5 +1,6 @@
 :root {
 	--ux-color: #236aa4;
+	--ux-image-url: url("https://images.unsplash.com/photo-1490806230066-f7e6f7bf5052?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=2ca889535ea01f912f94ac4ddf0034e0&auto=format&fit=crop&w=2233&q=80")
 }
 
 .container {
@@ -17,7 +18,12 @@
 }
 
 .ux {
-    color: var(--ux-color)
+    color: var(--ux-color);
+	-webkit-text-fill-color: transparent;
+	background: -webkit-linear-gradient(var(--ux-color), var(--ux-color)), var(--ux-image-url) repeat;
+	background: -o-linear-gradient(transparent, transparent);
+	-webkit-background-clip: text;
+	background-size: cover;
 }
 
 .cursor {
