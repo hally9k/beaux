@@ -25,51 +25,74 @@ const img = new Image()
 
 const requestEpic = $action =>
 	$action.ofType(REQUEST).mergeMap(({ payload }) => {
-		const url = [
-			'https://images.unsplash.com/photo-1490806230066-f7e6f7bf5052?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=2ca889535ea01f912f94ac4ddf0034e0&auto=format&fit=crop&w=2233&q=80',
-			'https://images.unsplash.com/photo-1510016785329-91a548661797?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=83087784e83098da941676741fa78c23&auto=format&fit=crop&w=1320&q=80'
-		][count++ % 2]
+		// 	const url = [
+		// 		'https://images.unsplash.com/photo-1490806230066-f7e6f7bf5052?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=2ca889535ea01f912f94ac4ddf0034e0&auto=format&fit=crop&w=2233&q=80',
+		// 		'https://images.unsplash.com/photo-1510016785329-91a548661797?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=83087784e83098da941676741fa78c23&auto=format&fit=crop&w=1320&q=80'
+		// 	][count++ % 2]
+		//
+		// 	img.src = url
+		//
+		// 	const mockResult = {
+		// 		results: [
+		// 			{
+		// 				user: {
+		// 					name: 'Hal Smith',
+		// 					links: {
+		// 						self: 'http://me/me.com'
+		// 					}
+		// 				},
+		// 				urls: {
+		// 					regular: url
+		// 				}
+		// 			}
+		// 		]
+		// 	}
+		//
+		// 	const {
+		// 		user: {
+		// 			name: photographerName,
+		// 			links: { self: photographerProfile }
+		// 		},
+		// 		urls: { regular: imageUrl }
+		// 	} = mockResult.results[0]
+		//
+		// 	return [
+		// 		receive({
+		// 			imageUrl,
+		// 			photographerName,
+		// 			photographerProfile
+		// 		})
+		// 	]
+		// })
+		return fetch(
+			`https://api.unsplash.com/search/photos/?page=1&query=${payload}&client_id=73c33f84498fa526d6cfa571253007d571012760a3b48cb5ebfdcd518083c45b`
+		)
+			.then(x => x.json())
+			.then(data => {
+				const randomIndex = getRandomInt(0, data.results.length)
+				console.log(payload, data.results.length, randomIndex)
 
-		img.src = url
-
-		const mockResult = {
-			results: [
-				{
+				const {
 					user: {
-						name: 'Hal Smith',
-						links: {
-							self: 'http://me/me.com'
-						}
+						name: photographerName,
+						links: { self: photographerProfile }
 					},
-					urls: {
-						regular: url
-					}
-				}
-			]
-		}
+					urls: { small: imageUrl }
+				} = data.results[randomIndex]
 
-		const {
-			user: {
-				name: photographerName,
-				links: { self: photographerProfile }
-			},
-			urls: { regular: imageUrl }
-		} = mockResult.results[0]
+				img.src = imageUrl
 
-		return [
-			receive({
-				imageUrl,
-				photographerName,
-				photographerProfile
+				return receive({
+					imageUrl,
+					photographerName,
+					photographerProfile
+				})
 			})
-		]
 	})
-// fetch(
-// 	`https://api.unsplash.com/search/photos/?page=1&query=${payload}&client_id=73c33f84498fa526d6cfa571253007d571012760a3b48cb5ebfdcd518083c45b`
-// )
-// 	.then(x => x.json())
-// 	.then(items => receive(items))
-// )
+
+function getRandomInt(min, max) {
+	return Math.floor(Math.random() * (max - min + 1)) + min
+}
 
 export const epics = {
 	requestEpic

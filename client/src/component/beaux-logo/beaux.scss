@@ -11,10 +11,31 @@
 }
 
 .beaux {
-	font-size: 10rem;
+	font-size: 16rem;
 	font-weight: 900;
-	min-height: 12rem;
+	min-height: 19rem;
 	color: silver;
+}
+
+@media (max-width: 1000px) {
+	.beaux {
+		font-size: 12rem;
+		min-height: 14rem;
+	}
+}
+
+@media (max-width: 750px) {
+	.beaux {
+		font-size: 8rem;
+		min-height: 10rem;
+	}
+}
+
+@media (max-width: 500px) {
+	.beaux {
+		font-size: 5rem;
+		min-height: 6rem;
+	}
 }
 
 .ux {
@@ -28,6 +49,7 @@
 
 .cursor {
 	color: silver;
+	-webkit-text-fill-color: silver
 }
 
 .strap-line {
@@ -35,7 +57,28 @@
 	opacity: 0;
 	transition: opacity ease-in 1s;
 	font-weight: 200;
+	font-size: 2rem;
 }
+
+
+@media (max-width: 1000px) {
+	.strap-line{
+		font-size: 1.5rem;
+	}
+}
+
+@media (max-width: 750px) {
+	.strap-line{
+		font-size: 1.2rem;
+	}
+}
+
+@media (max-width: 500px) {
+	.strap-line{
+		font-size: 1rem;
+	}
+}
+
 
 .visible {
 	opacity: 1;
