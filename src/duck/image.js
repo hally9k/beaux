@@ -85,7 +85,7 @@ function processResponse(data) {
 	const {
 		user: {
 			name: photographerName,
-			links: { self: photographerProfile }
+			links: { html: photographerProfile }
 		},
 		urls: { small: imageUrl }
 	} = result
